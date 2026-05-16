@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        <title>Admin Dashboard — Notis</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body class="admin-theme">
+
+<nav class="nav admin-nav">
+    <div style="display:flex;align-items:center;gap:0;">
+        <a href="admin.html" class="nav-brand">Noti<span>s</span></a>
+        <span class="nav-badge">Admin</span>
+    </div>
+    <div class="nav-actions">
+        <span class="nav-user" id="nav-admin-name"></span>
+        <button class="btn btn-ghost-light btn-sm" onclick="logout()">Sign out</button>
+    </div>
+</nav>
+
+<div class="page-wide">
+    <div class="page-header">
+        <div>
+            <h1 class="page-title">Admin Dashboard</h1>
+            <p class="page-subtitle">All notes across all users</p>
+        </div>
+        <button class="btn btn-admin" onclick="loadAllNotes()">↻ Refresh</button>
+    </div>
+
+    <!-- Stats row -->
+    <div class="admin-stats">
+        <div class="stat-card">
+            <div class="stat-num" id="stat-total">—</div>
+            <div class="stat-label">Total notes</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-num" id="stat-users">—</div>
+            <div class="stat-label">Active users</div>
+        </div>
+    </div>
+
+    <!-- Notes table -->
+    <div id="admin-container">
+        <div class="loader"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+    </div>
+</div>
+
+<script src="./js/script.js"></script>
+</body>
+</html></title>
+</head>
+<body>
+
+</body>
+</html>

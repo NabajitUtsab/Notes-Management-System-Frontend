@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Note — Notis</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+<nav class="nav">
+    <a href="index.html" class="nav-brand">Noti<span>s</span></a>
+    <div class="nav-actions">
+        <button class="btn btn-ghost btn-sm" onclick="logout()">Sign out</button>
+    </div>
+</nav>
+
+<div class="page">
+    <a href="index.html" class="back-link">← Back to notes</a>
+
+    <div class="page-header">
+        <div>
+            <h1 class="page-title">New Note</h1>
+            <p class="page-subtitle">Write something worth remembering</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="form-group">
+            <label class="form-label" for="title">Title</label>
+            <input class="form-input" id="title" type="text" placeholder="Give your note a title…">
+        </div>
+        <div class="form-group">
+            <label class="form-label" for="content">Content</label>
+            <textarea class="form-textarea" id="content" placeholder="Write your note here…"></textarea>
+        </div>
+        <div class="form-actions">
+            <a href="index.html" class="btn btn-ghost">Cancel</a>
+            <button class="btn btn-primary" onclick="createNote()">Save note →</button>
+        </div>
+    </div>
+</div>
+
+<script src="./js/script.js"></script>
+</body>
+</html>

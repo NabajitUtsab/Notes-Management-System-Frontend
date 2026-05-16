@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Notes — Notis</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+<nav class="nav">
+  <a href="index.html" class="nav-brand">Noti<span>s</span></a>
+  <div class="nav-actions">
+    <span class="nav-user" id="nav-username"></span>
+    <a href="createNote.html" class="btn btn-primary btn-sm">+ New note</a>
+    <button class="btn btn-ghost btn-sm" onclick="logout()">Sign out</button>
+  </div>
+</nav>
+
+<div class="page">
+  <div class="page-header">
+    <div>
+      <h1 class="page-title">My Notes</h1>
+      <p class="page-subtitle" id="note-count">Loading…</p>
+    </div>
+  </div>
+  <div id="notes-container">
+    <div class="loader"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+  </div>
+</div>
+
+<script src="./js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Note — Notis</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+<nav class="nav">
+    <a href="index.html" class="nav-brand">Noti<span>s</span></a>
+    <div class="nav-actions">
+        <button class="btn btn-ghost btn-sm" onclick="logout()">Sign out</button>
+    </div>
+</nav>
+
+<div class="page">
+    <a href="index.html" class="back-link">← All notes</a>
+
+    <!-- LOADER -->
+    <div id="loader" class="loader">
+        <div class="dot"></div><div class="dot"></div><div class="dot"></div>
+    </div>
+
+    <!-- VIEW MODE -->
+    <div id="view-mode" style="display:none;">
+        <div class="card">
+            <h1 class="detail-title" id="view-title"></h1>
+            <p class="detail-content" id="view-content"></p>
+            <hr class="detail-divider">
+            <div class="detail-actions">
+                <button class="btn btn-ghost" onclick="enterEditMode()">✏️ Edit note</button>
+                <button class="btn btn-danger" onclick="confirmDelete()">🗑 Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- EDIT MODE -->
+    <div id="edit-mode" style="display:none;">
+        <div class="card">
+            <div class="form-group">
+                <label class="form-label" for="edit-title">Title</label>
+                <input class="form-input" id="edit-title" type="text">
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="edit-content">Content</label>
+                <textarea class="form-textarea" id="edit-content"></textarea>
+            </div>
+            <div class="form-actions">
+                <button class="btn btn-ghost" onclick="cancelEdit()">Cancel</button>
+                <button class="btn btn-primary" onclick="saveEdit()">Save changes →</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="./js/script.js"></script>
+</body>
+</html>
