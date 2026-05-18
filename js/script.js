@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:8080";
+const BASE_URL = "https://notes-management-system-1-jf7k.onrender.com";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // HELPERS
