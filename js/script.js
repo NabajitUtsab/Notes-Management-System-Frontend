@@ -40,7 +40,7 @@ function currentPage() {
     const p = window.location.pathname;
     if (p.includes("admin"))       return "admin";
     if (p.includes("createNote")) return "create";
-    if (p.includes("note-detail")) return "detail";
+    if (p.includes("noteDetail")) return "detail";
     if (p.includes("index") || p.endsWith("/") || p === "/") return "index";
     if (p.includes("login"))       return "login";
     if (p.includes("register"))    return "register";
@@ -208,7 +208,7 @@ async function loadNotesList() {
                 ? n.content.slice(0, 80) + (n.content.length > 80 ? "…" : "")
                 : "No content";
             html += `
-                <a class="note-card" href="note-detail.html?id=${n.id}" style="animation-delay:${i * 0.05}s">
+                <a class="note-card" href="noteDetail.html?id=${n.id}" style="animation-delay:${i * 0.05}s">
                     <div class="note-card-body">
                         <div class="note-card-title">${escHtml(n.title)}</div>
                         <div class="note-card-preview">${escHtml(preview)}</div>
@@ -253,7 +253,7 @@ async function createNote() {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// USER — note detail  (note-detail.html)
+// USER — note detail  (noteDetail.html)
 // ─────────────────────────────────────────────────────────────────────────────
 
 let currentNote = null;
