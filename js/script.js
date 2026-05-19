@@ -37,13 +37,13 @@ function escHtml(str) {
 }
 
 function currentPage() {
-    const p = window.location.pathname;
-    if (p.includes("admin"))                                    return "admin";
-    if (p.includes("createNote"))                               return "create";
-    if (p.includes("noteDetail") || p.includes("note-detail")) return "detail";
-    if (p.includes("index") || p.endsWith("/") || p === "/")   return "index";
-    if (p.includes("login"))                                    return "login";
-    if (p.includes("register"))                                 return "register";
+    const p = window.location.pathname.toLowerCase();
+    if (p.includes("admin"))                                  return "admin";
+    if (p.includes("createnote"))                             return "create";
+    if (p.includes("notedetail") || p.includes("note-detail")) return "detail";
+    if (p.includes("index") || p.endsWith("/") || p === "/") return "index";
+    if (p.includes("login"))                                  return "login";
+    if (p.includes("register"))                               return "register";
     return "other";
 }
 
