@@ -38,17 +38,17 @@ function escHtml(str) {
 
 function currentPage() {
     const p = window.location.pathname;
-    if (p.includes("admin"))       return "admin";
-    if (p.includes("createNote")) return "create";
-    if (p.includes("noteDetail")) return "detail";
-    if (p.includes("index") || p.endsWith("/") || p === "/") return "index";
-    if (p.includes("login"))       return "login";
-    if (p.includes("register"))    return "register";
+    if (p.includes("admin"))                                    return "admin";
+    if (p.includes("createNote"))                               return "create";
+    if (p.includes("noteDetail") || p.includes("note-detail")) return "detail";
+    if (p.includes("index") || p.endsWith("/") || p === "/")   return "index";
+    if (p.includes("login"))                                    return "login";
+    if (p.includes("register"))                                 return "register";
     return "other";
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// LOGIN PAGE — role toggle (UI only, no logic)
+// LOGIN PAGE — role toggle
 // ─────────────────────────────────────────────────────────────────────────────
 
 let selectedRole = "user";
@@ -78,9 +78,6 @@ function setRole(role) {
 
 // ─────────────────────────────────────────────────────────────────────────────
 // AUTH
-// Admin accounts must be created directly in the database or via a secure
-// backend-only process. The frontend never stores or exposes admin credentials.
-// Role is determined solely by what the backend puts inside the signed JWT.
 // ─────────────────────────────────────────────────────────────────────────────
 
 async function register() {
@@ -118,13 +115,11 @@ async function login() {
         const data = await res.json();
         if (!res.ok) { toast("Invalid username or password.", "error"); return; }
 
-        // Extract JWT from response message
         const prefix = "Token: ";
         const idx    = data.message ? data.message.indexOf(prefix) : -1;
         if (idx === -1) { toast("Login error: no token received.", "error"); return; }
         const token = data.message.substring(idx + prefix.length);
 
-        // Decode JWT payload to read roles — role is set by the backend, not the frontend
         let roles = [];
         try {
             const payload = JSON.parse(atob(token.split(".")[1]));
@@ -134,11 +129,9 @@ async function login() {
         const isAdmin = roles.some(r => r === "ROLE_ADMIN");
         const isUser  = roles.some(r => r === "ROLE_USER");
 
-        // If user clicked Admin tab but backend says they're not admin — block
         if (selectedRole === "admin" && !isAdmin) {
             toast("Access denied. Not an admin account.", "error"); return;
         }
-        // If user clicked User tab but backend says they're admin — redirect them correctly
         if (selectedRole === "user" && isAdmin) {
             toast("Admin account detected. Redirecting…");
             localStorage.setItem("token",    token);
@@ -226,7 +219,7 @@ async function loadNotesList() {
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// USER — create note  (create-note.html)
+// USER — create note  (createNote.html)
 // ─────────────────────────────────────────────────────────────────────────────
 
 async function createNote() {
